@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/workspace/tests/resnet50_bs8/main_test.cpp" "/workspace/tests/resnet50_bs8/CMakeFiles/main_test.o.dir/main_test.cpp.o"
+  "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/main_test.cpp" "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/main_test.o.dir/main_test.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -16,7 +16,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/workspace/tests/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/DependInfo.cmake"
+  "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

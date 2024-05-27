@@ -58,18 +58,18 @@ endif()
 
 # Set these up as variables to make reading the generated file easier
 set(CMAKE_COMMAND "/usr/bin/cmake") # path
-set(source_file "/workspace/tests/resnet50_bs8/kernels/Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu") # path
-set(NVCC_generated_dependency_file "/workspace/tests/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o.NVCC-depend") # path
-set(cmake_dependency_file "/workspace/tests/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o.depend") # path
+set(source_file "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/kernels/Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu") # path
+set(NVCC_generated_dependency_file "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o.NVCC-depend") # path
+set(cmake_dependency_file "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o.depend") # path
 set(CUDA_make2cmake "/usr/share/cmake-3.10/Modules/FindCUDA/make2cmake.cmake") # path
 set(CUDA_parse_cubin "/usr/share/cmake-3.10/Modules/FindCUDA/parse_cubin.cmake") # path
 set(build_cubin OFF) # bool
 set(CUDA_HOST_COMPILER "/usr/bin/cc") # path
 # We won't actually use these variables for now, but we need to set this, in
 # order to force this file to be run again if it changes.
-set(generated_file_path "/workspace/tests/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/.") # path
-set(generated_file_internal "/workspace/tests/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/./nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o") # path
-set(generated_cubin_file_internal "/workspace/tests/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/./nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o.cubin.txt") # path
+set(generated_file_path "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/.") # path
+set(generated_file_internal "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/./nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o") # path
+set(generated_cubin_file_internal "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir/kernels/./nnfusion_naive_rt_generated_Matched_Pattern_float_float_float_float_cuda_Matched_Pattern_559.cu.o.cubin.txt") # path
 
 set(CUDA_NVCC_EXECUTABLE "/usr/local/cuda/bin/nvcc") # path
 set(CUDA_NVCC_FLAGS  -gencode arch=compute_80,code=sm_80 -gencode arch=compute_61,code=sm_61 -gencode arch=compute_70,code=sm_70 -gencode arch=compute_75,code=sm_75 -O2 -cudart shared --expt-relaxed-constexpr ;; ) # list
@@ -79,7 +79,7 @@ set(CUDA_NVCC_FLAGS_DEBUG  ; )
 set(CUDA_NVCC_FLAGS_MINSIZEREL  ; )
 set(CUDA_NVCC_FLAGS_RELWITHDEBINFO  ; )
 set(nvcc_flags -m64;--std;c++11;-Dnnfusion_naive_rt_EXPORTS) # list
-set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/workspace/tests/resnet50_bs8;/usr/local/cuda/include") # list (needs to be in quotes to handle spaces properly).
+set(CUDA_NVCC_INCLUDE_DIRS "/usr/local/cuda/include;/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8;/usr/local/cuda/include") # list (needs to be in quotes to handle spaces properly).
 set(CUDA_NVCC_COMPILE_DEFINITIONS [==[]==]) # list (needs to be in lua quotes see #16510 ).
 set(format_flag "-c") # string
 set(cuda_language_flag ) # list

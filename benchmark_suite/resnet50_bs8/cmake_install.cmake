@@ -1,4 +1,4 @@
-# Install script for directory: /workspace/tests/resnet50_bs8
+# Install script for directory: /cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/workspace/tests/resnet50_bs8/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

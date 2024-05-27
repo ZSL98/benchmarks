@@ -6,5 +6,5 @@ CXX_FLAGS = -Wall -Wextra -std=c++11 -march=native -O2
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/workspace/tests/resnet50_bs8 -I/usr/local/cuda/include 
+CXX_INCLUDES = -I/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8 -I/usr/local/cuda/include 
 

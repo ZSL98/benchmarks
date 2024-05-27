@@ -229,6 +229,7 @@ def imagenet_loop(
                                 data = {
                                     'throughput': (batch_idx-2000)/total_time
                                 }
+                                print("throughput: ", (batch_idx-2000)/total_time)
                                 with open(f'client_{tid}.json', 'w') as f:
                                     json.dump(data, f)
 
