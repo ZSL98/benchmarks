@@ -51,7 +51,7 @@ def launch_jobs(config_dict_list, input_args, run_eval):
     num_clients = len(config_dict_list)
     print(num_clients)
 
-    s = torch.cuda.Stream()
+    # s = torch.cuda.Stream()
 
     # init
 

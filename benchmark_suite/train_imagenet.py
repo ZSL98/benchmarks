@@ -33,8 +33,8 @@ def seed_everything(seed: int):
 class DummyDataLoader():
     def __init__(self, batchsize):
         self.batchsize = batchsize
-        self.data = torch.rand([self.batchsize, 3, 224, 224], pin_memory=True)
-        self.target = torch.ones([self.batchsize], pin_memory=True, dtype=torch.long)
+        self.data = torch.rand([self.batchsize, 3, 224, 224])
+        self.target = torch.ones([self.batchsize], dtype=torch.long)
 
     def __iter__(self):
         return self
