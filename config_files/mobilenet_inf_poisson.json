@@ -1,0 +1,17 @@
+[
+    {
+		"arch": "mobilenet_v2",
+		"kernel_file": "",
+        "num_kernels": 175,
+        "num_iters": 200000,
+		"args": {
+			"model_name": "mobilenet_v2",
+			"batchsize": 8,
+			"dummy_data": true,
+            "rps": 100,
+			"uniform": false,
+            "input_file": "",
+			"train": false
+		}
+	}
+]

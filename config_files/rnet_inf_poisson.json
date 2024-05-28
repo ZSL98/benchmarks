@@ -1,0 +1,17 @@
+[
+    {
+		"arch": "resnet50",
+		"kernel_file": "",
+        "num_kernels": 175,
+        "num_iters": 200000,
+		"args": {
+			"model_name": "resnet50",
+			"batchsize": 8,
+			"dummy_data": true,
+            "rps": 50,
+			"uniform": false,
+            "input_file": "",
+			"train": false
+		}
+	}
+]

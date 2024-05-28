@@ -1,0 +1,15 @@
+[
+    {
+		"arch": "transformer",
+		"kernel_file": "",
+        "num_kernels": 175,
+        "num_iters": 200000,
+		"args": {
+			"batchsize": 8,
+			"dummy_data": true,
+            "rps": 30,
+			"uniform": false,
+			"train": false
+		}
+	}
+]

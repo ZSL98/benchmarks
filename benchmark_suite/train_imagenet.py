@@ -130,7 +130,7 @@ def imagenet_loop(
 
     #  open loop
     next_startup = time.time()
-    open_loop = False
+    open_loop = True
 
     # [TODO:] optimize the code below
     if True:
@@ -158,13 +158,13 @@ def imagenet_loop(
                     timings.append(iter_time)
                     #print(f"Client {tid} finished! Wait! It took {timings[batch_idx]}")
                     batch_idx, batch = next(train_iter)
-                    if batch_idx == 2000: # for warmup
+                    if batch_idx == 1000: # for warmup
                         print("begin to record time!")
                         start = time.time()
-                    if batch_idx == 6000:
+                    if batch_idx == 5000:
                         print("begin to record end time!")
                         total_time = time.time() - start
-                        print("throughput: ", (batch_idx-2000)/total_time)
+                        print("throughput: ", (batch_idx-1000)/total_time)
                     # if check_stop(backend_lib):
                     #     print("---- STOP!")
                     #     break
@@ -176,7 +176,7 @@ def imagenet_loop(
                         #### OPEN LOOP ####
                         if open_loop:
                             if (cur_time >= next_startup):
-                                print(f"-- Client {tid}, submit!, batch_idx is {batch_idx}")
+                                # print(f"-- Client {tid}, submit!, batch_idx is {batch_idx}")
                                 if batch_idx==100:
                                     torch.cuda.profiler.cudart().cudaProfilerStart()
                                 gpu_data = batch[0].to(local_rank)
@@ -186,20 +186,23 @@ def imagenet_loop(
                                 #     torch.cuda.profiler.cudart().cudaProfilerStop()
                                 req_time = time.time()-next_startup
                                 timings.append(req_time)
-                                print(f"-- Client {tid} finished! Wait! It took {req_time}")
-                                if batch_idx>=10:
+                                # print(f"-- Client {tid} finished! Wait! It took {req_time}")
+                                if batch_idx>=2000:
                                     next_startup += sleep_times[batch_idx]
                                 else:
                                     next_startup = time.time()
                                 batch_idx,batch = next(train_iter)
-                                if (batch_idx == 1 or (batch_idx == 10)):
-                                    # hp starts after
-                                    if (batch_idx==10):
-                                        next_startup = time.time()
-                                        start = time.time()
+                                if (batch_idx==2000):
+                                    print("begin to record start time!")
+                                    next_startup = time.time()
+                                    start = time.time()
                                 dur = next_startup-time.time()
                                 if (dur>0):
                                     time.sleep(dur)
+                                if (batch_idx==20000):
+                                    print("begin to record end time!")
+                                    total_time = time.time() - start
+                                    print("throughput: ", (batch_idx-2000)/total_time)
                                 # if check_stop(backend_lib):
                                 #     print("---- STOP!")
                                 #     break
