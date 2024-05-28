@@ -99,8 +99,6 @@ def bert_loop(batchsize, train, num_iters, rps, uniform, dummy_data, local_rank,
     if config.vocab_size % 8 != 0:
         config.vocab_size += 8 - (config.vocab_size % 8)
 
-    print("-------------- thread id:  ", threading.get_native_id())
-
 
     model = modeling.BertForQuestionAnswering(config).to(0)
 

@@ -119,7 +119,7 @@ def load_tf_weights_in_bert(model, tf_checkpoint_path):
     return model
 
 def gelu(x):
-    return torch.nn.functional.gelu(x, approximate='tanh')
+    return torch.nn.functional.gelu(x)
 
 def swish(x):
     return x * torch.sigmoid(x)
