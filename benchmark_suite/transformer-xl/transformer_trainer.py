@@ -123,12 +123,13 @@ def transformer_loop(batchsize, train, num_iters, rps, uniform, dummy_data, loca
                 optimizer.step()
                 # block(backend_lib, batch_idx)
                 batch_idx, batch = next(train_iter)
-                if (batch_idx == 1): # for backward
-                    barriers[0].wait()
-                if batch_idx == 10:
-                    barriers[0].wait()
-                    print("After sync!!")
+                if batch_idx == 2000: # for warmup
+                    print("begin to record time!")
                     start = time.time()
+                if batch_idx == 6000:
+                    print("begin to record end time!")
+                    total_time = time.time() - start
+                    print("throughput: ", (batch_idx-2000)/total_time)
                 # if check_stop(backend_lib):
                 #     print("---- STOP!")
                 #     break
@@ -153,7 +154,6 @@ def transformer_loop(batchsize, train, num_iters, rps, uniform, dummy_data, loca
                                 next_startup = time.time()
                             batch_idx,batch = next(train_iter)
                             if (batch_idx == 1 or (batch_idx == 10)):
-                                    barriers[0].wait()
                                     # hp starts after
                                     if (batch_idx==10):
                                         next_startup = time.time()
@@ -166,16 +166,25 @@ def transformer_loop(batchsize, train, num_iters, rps, uniform, dummy_data, loca
                             #     break
                     else:
                         #### CLOSED LOOP ####
-                        print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
+                        if (batch_idx==2000):
+                            print("begin to record start time!")
+                            start = time.time()
+                            last_time = time.time()
                         data, target = batch[0].to(local_rank), batch[1].to(local_rank)
                         output, mems = model(data, target, mems)
                         print(f"Client {tid} finished! Wait!")
                         batch_idx,batch = next(train_iter)
-                        if ((batch_idx == 1) or (batch_idx == 10)):
-                            barriers[0].wait()
+                        if (batch_idx==20000):
+                            print("begin to record end time!")
+                            total_time = time.time() - start
+                            data = {
+                                'throughput': (batch_idx-2000)/total_time
+                            }
+                            print("throughput: ", (batch_idx-2000)/total_time)
+                            with open(f'client_{tid}.json', 'w') as f:
+                                json.dump(data, f)
 
 
-    barriers[0].wait()
     total_time = time.time() - start
 
     if not train and len(timings)>0:

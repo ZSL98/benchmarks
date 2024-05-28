@@ -161,11 +161,10 @@ def imagenet_loop(
                     if batch_idx == 2000: # for warmup
                         print("begin to record time!")
                         start = time.time()
-                    if (batch_idx==6000):
+                    if batch_idx == 6000:
                         print("begin to record end time!")
                         total_time = time.time() - start
-                        throughputx = (batch_idx-2000)/total_time
-                        print(throughputx)
+                        print("throughput: ", (batch_idx-2000)/total_time)
                     # if check_stop(backend_lib):
                     #     print("---- STOP!")
                     #     break

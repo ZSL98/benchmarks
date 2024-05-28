@@ -150,11 +150,13 @@ def bert_loop(batchsize, train, num_iters, rps, uniform, dummy_data, local_rank,
                 optimizer.step()
                 # block(backend_lib, batch_idx)
                 batch_idx, batch = next(train_iter)
-                if (batch_idx == 1): # for backward
-                    barriers[0].wait()
-                if batch_idx == 10:
-                    barriers[0].wait()
+                if batch_idx == 2000: # for warmup
+                    print("begin to record time!")
                     start = time.time()
+                if batch_idx == 6000:
+                    print("begin to record end time!")
+                    total_time = time.time() - start
+                    print("throughput: ", (batch_idx-2000)/total_time)
                 # if check_stop(backend_lib):
                 #     print("---- STOP!")
                 #     break
@@ -181,7 +183,6 @@ def bert_loop(batchsize, train, num_iters, rps, uniform, dummy_data, local_rank,
                                 next_startup = time.time()
                             batch_idx,batch = next(train_iter)
                             if ((batch_idx == 1) or (batch_idx == 10)):
-                                barriers[0].wait()
                                 if (batch_idx==10):
                                     #time.sleep(1)
                                     next_startup = time.time()
@@ -195,17 +196,26 @@ def bert_loop(batchsize, train, num_iters, rps, uniform, dummy_data, local_rank,
 
                     else:
                         ### CLOSED LOOP ###
-                        print(f"Client {tid}, submit!, batch_idx is {batch_idx}")
+                        if (batch_idx==2000):
+                            print("begin to record start time!")
+                            start = time.time()
+                            last_time = time.time()
+
                         input_ids, segment_ids, input_mask = batch[0].to(local_rank), batch[1].to(local_rank), batch[2].to(local_rank)
                         output = model(input_ids, segment_ids, input_mask)
-                        print(f"Client {tid} finished! Wait!")
-                        if ((batch_idx == 1) or (batch_idx == 10)):
-                            barriers[0].wait()
-                        batch_idx,batch = next(train_iter)
 
+                        batch_idx,batch = next(train_iter)
+                        if (batch_idx==20000):
+                            print("begin to record end time!")
+                            total_time = time.time() - start
+                            data = {
+                                'throughput': (batch_idx-2000)/total_time
+                            }
+                            print("throughput: ", (batch_idx-2000)/total_time)
+                            with open(f'client_{tid}.json', 'w') as f:
+                                json.dump(data, f)
 
     torch.cuda.profiler.cudart().cudaProfilerStop()
-    barriers[0].wait()
     total_time = time.time() - start
 
 

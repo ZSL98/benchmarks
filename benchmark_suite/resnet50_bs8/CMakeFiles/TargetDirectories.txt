@@ -1,4 +1,0 @@
-/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/edit_cache.dir
-/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/nnfusion_naive_rt.dir
-/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/rebuild_cache.dir
-/cluster/workloads/benchmarks/benchmark_suite/resnet50_bs8/CMakeFiles/main_test.o.dir
